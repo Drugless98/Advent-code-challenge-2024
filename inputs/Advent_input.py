@@ -43,10 +43,14 @@ class Input:
             #: Get day task info
             import html2text
             response = requests.get(f'https://adventofcode.com/2024/day/{day}', cookies=cookie).content.__str__()
-            start_index = response.find("---")
-            
+
             #: Convert html to markdown
-            markdown = html2text.html2text(response[start_index:])
+            ##: Find indexes for task start and end
+            start_index = response.find("---")
+            end_index   = response.find("**</p>\\n<p>At this point, you should <a")
+
+            ##: convert
+            markdown = html2text.html2text(response[start_index:end_index])
             markdown = markdown.replace("---", "#")
             markdown = markdown.replace("\\n", "")
             markdown = markdown.replace("\\", "")

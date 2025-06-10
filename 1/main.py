@@ -10,17 +10,44 @@ DAY = 1
 
 def main(task_input):
     def part_one(task_input: str):
-        def split_into_lists(header, tail):
-            pass
+        ##: make each column into sorted list
+        left_arr    = []
+        right_arr   = []
 
-        left_arr, right_arr = split_into_lists(task_input[0], task_input[1:])
+        for line in task_input.splitlines():
+            left, right = line.split()
+            left_arr.append(left)
+            right_arr.append(right)
+        left_arr.sort()
+        right_arr.sort()
 
+        ##: calc differences
+        sum = 0
+        for left, right in zip(left_arr, right_arr):
+            sum += abs(int(left)-int(right))
 
-
-        return None
+        ##: Done
+        print(f"Day {DAY} result: {sum}")
+        return True
     
-    def part_two(task_input):
-        return None
+    def part_two(task_input: str):
+        ##: make each column into sorted list
+        left_arr    = []
+        right_arr   = []
+
+        for line in task_input.splitlines():
+            left, right = line.split()
+            left_arr.append(left)
+            right_arr.append(right)
+        
+        ##: Calc similarity score
+        similarity_score = 0
+        for number in left_arr:
+            similarity_score += int(number) * right_arr.count(number)
+
+        ##: Done
+        print(f"Day {DAY} result: {similarity_score}")
+        return True
     
     return part_one(task_input) and part_two(task_input)
 

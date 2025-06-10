@@ -47,6 +47,7 @@ class Input:
             markdown = html2text.html2text(response[start_index:])
             markdown = markdown.replace("---", "#")
             markdown = markdown.replace("\\n", "")
+            markdown = markdown.replace("\\", "")
             json_data["task_info"][day]  = markdown
 
         with open(self.data_file, "w+", encoding="utf-8") as file:

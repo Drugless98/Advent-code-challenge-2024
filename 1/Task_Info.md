@@ -1,4 +1,4 @@
-\# Day 1: Historian Hysteria #
+# Day 1: Historian Hysteria #
 
 The _Chief Historian_ is always present for the big Christmas sleigh launch,
 but nobody has seen him in months! Last anyone heard, he was visiting
@@ -10,7 +10,7 @@ they think he was most likely to visit.
 
 As each location is checked, they will mark it on their list with a _star_.
 They figure the Chief Historian _must_ be in one of the first fifty places
-they\'ll look, so in order to save Christmas, you need to help them get _fifty
+they'll look, so in order to save Christmas, you need to help them get _fifty
 stars_ on their list before Santa takes off on December 25th.
 
 
@@ -21,10 +21,10 @@ the first. Each puzzle grants _one star_. Good luck!
 
 
 
-You haven\'t even left yet and the group of Elvish Senior Historians has
+You haven't even left yet and the group of Elvish Senior Historians has
 already hit a problem: their list of locations to check is currently _empty_.
 Eventually, someone decides that the best place to check first would be the
-Chief Historian\'s office.
+Chief Historian's office.
 
 
 
@@ -36,16 +36,16 @@ to determine which locations to search?
 
 
 
-Throughout the Chief\'s office, the historically significant locations are
+Throughout the Chief's office, the historically significant locations are
 listed not by name but by a unique number called the _location ID_. To make
-sure they don\'t miss anything, The Historians split into two groups, each
+sure they don't miss anything, The Historians split into two groups, each
 searching the office and trying to create their own complete list of location
 IDs.
 
 
 
-There\'s just one problem: by holding the two lists up _side by side_ (your
-puzzle input), it quickly becomes clear that the lists aren\'t very similar.
+There's just one problem: by holding the two lists up _side by side_ (your
+puzzle input), it quickly becomes clear that the lists aren't very similar.
 Maybe you can help The Historians reconcile their lists?
 
 
@@ -68,7 +68,7 @@ on.
 
 
 
-Within each pair, figure out _how far apart_ the two numbers are; you\'ll need
+Within each pair, figure out _how far apart_ the two numbers are; you'll need
 to _add up all of those distances_. For example, if you pair up a `3` from the
 left list with a `7` from the right list, the distance apart is `4`; if you
 pair up a `9` with a `3`, the distance apart is `6`.
@@ -114,7 +114,7 @@ distance between your lists?_
 
 Your puzzle answer was `2580760`.
 
-## \# Part Two #
+## # Part Two #
 
 Your analysis only confirmed what everyone feared: the two lists of location
 IDs are indeed very different.
@@ -125,15 +125,15 @@ Or are they?
 
 
 
-The Historians can\'t agree on which group made the mistakes _or_ how to read
-most of the Chief\'s handwriting, but in the commotion you notice an
+The Historians can't agree on which group made the mistakes _or_ how to read
+most of the Chief's handwriting, but in the commotion you notice an
 interesting detail: a lot of location IDs appear in both lists! Maybe the
-other numbers aren\'t location IDs at all but rather misinterpreted
+other numbers aren't location IDs at all but rather misinterpreted
 handwriting.
 
 
 
-This time, you\'ll need to figure out exactly how often each number from the
+This time, you'll need to figure out exactly how often each number from the
 left list appears in the right list. Calculate a total _similarity score_ by
 adding up each number in the left list after multiplying it by the number of
 times that number appears in the right list.

@@ -43,7 +43,9 @@ class Input:
             #: Get day task info
             import html2text
             response = requests.get(f'https://adventofcode.com/2024/day/{day}', cookies=cookie).content.__str__()
-            markdown = html2text.html2text(response)
+            response = response.replace("\n", "")
+            start_index = response.find("---")
+            markdown = html2text.html2text(response[start_index:])
             json_data["task_info"][day]  = markdown
 
         with open(self.data_file, "w+", encoding="utf-8") as file:

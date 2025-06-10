@@ -1,39 +1,4 @@
-b'\n\n\n\n
-
-# [Advent of Code](/)
-
-  * [[About]](/2024/about)
-  * [[Events]](/2024/events)
-  * [[Shop]](https://cottonbureau.com/people/advent-of-code)
-  * [[Settings]](/2024/settings)
-  * [[Log Out]](/2024/auth/logout)
-
-Andreas Mads N\xc3\xb8hr 17*
-
-#    0x0000|[2024](/2024)
-
-  * [[Calendar]](/2024)
-  * [[AoC++]](/2024/support)
-  * [[Sponsors]](/2024/sponsors)
-  * [[Leaderboard]](/2024/leaderboard)
-  * [[Stats]](/2024/stats)
-
-\n\n
-
-\n
-
-Our [sponsors](/2024/sponsors) help make Advent of Code possible:
-
-[Boot.dev](/2024/sponsors/redirect?url=https%3A%2F%2Fwww%2Eboot%2Edev%3Fpromo%3DADVENTOFCODE)
-\- Do Adventers-of-Code make the best backend devs? We think so! If you want
-to master backend development in Python, SQL, and Go, then try our hands-on
-courses on Boot.dev! Get 25% off first payment w/promo ADVENTOFCODE
-
-\n
-
-\n\n\n
-
-## \--- Day 1: Historian Hysteria ---
+\--- Day 1: Historian Hysteria ---
 
 The _Chief Historian_ is always present for the big Christmas sleigh launch,
 but nobody has seen him in months! Last anyone heard, he was visiting

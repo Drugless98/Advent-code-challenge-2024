@@ -6,26 +6,29 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from inputs.Advent_input import Input
 
 #: Constant
-DAY = 1
+DAY = _
 
-def main():
-    def part_one():
+def main(task_input):
+    def part_one(task_input):
         return None
     
-    def part_two():
+    def part_two(task_input):
         return None
+    
+    return part_one(task_input) and part_two(task_input)
+
 
 
 if __name__ == "__main__":
     #: Get task info and input
     input = Input()
-    day_one_data = input.get_input(DAY)
-
-    #: Make markdownfile if there isn't one
-    markdown_file = os.path.join(os.path.dirname(__file__), "Task_Info.md")
-    if not os.path.isfile(markdown_file):
-        with open(markdown_file, "w+") as file:
-            file.write(day_one_data["task_info"][str(DAY)])
+    day_data = input.data
     
     #: Run  
-    main()
+    done = main(input.get_input(DAY))
+
+    if done:
+        #: Make markdown file 
+        markdown_file = os.path.join(os.path.dirname(__file__), "Task_Info.md")
+        with open(markdown_file, "w+") as file:
+            file.write(day_data["task_info"][str(DAY)])

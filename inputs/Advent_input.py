@@ -44,6 +44,8 @@ class Input:
             import html2text
             response = requests.get(f'https://adventofcode.com/2024/day/{day}', cookies=cookie).content.__str__()
             start_index = response.find("---")
+            
+            #: Convert html to markdown
             markdown = html2text.html2text(response[start_index:])
             markdown = markdown.replace("---", "#")
             markdown = markdown.replace("\\n", "")

@@ -9,10 +9,10 @@ from inputs.Advent_input import Input
 DAY = _
 
 def main(task_input):
-    def part_one(task_input):
+    def part_one(task_input: str):
         return None
     
-    def part_two(task_input):
+    def part_two(task_input: str):
         return None
     
     return part_one(task_input) and part_two(task_input)

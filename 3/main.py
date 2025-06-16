@@ -33,7 +33,6 @@ def main(task_input):
         
         print(f"Day {DAY} part two, result: {result}")
         return result
-    
     return part_one(task_input) and part_two(task_input)
 
 

@@ -8,7 +8,7 @@ def time_execution(func: callable):
     def wrapper(*args, **kwargs):
         start_time = time.time()
         result = func(*args, **kwargs)
-        print(time.time() - start_time)
+        print(f'{func.__name__} took: {time.time() - start_time:6f}')
         return result
     return wrapper
 

@@ -3,7 +3,17 @@
 # PUT SESSION CODE HERE #
 SESSION_CODE = "53616c7465645f5f1996df66031206d208437335c32db8303ab4df92eb8661d4e1cb258f69f8c028cd7125d8c23798b13a9ba9fc744afe0b6e4df4c51854af0a"
 
+import time
+def time_execution(func: callable):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        print(time.time() - start_time)
+        return result
+    return wrapper
+
 class Input:
+    @time_execution
     def __init__(self):
         import os
         from json import load

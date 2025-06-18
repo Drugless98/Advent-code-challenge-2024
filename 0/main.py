@@ -5,6 +5,15 @@ import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from inputs.Advent_input import Input
 
+import time
+def time_execution(func: callable):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        print(time.time() - start_time)
+        return result
+    return wrapper
+
 #: Constant
 DAY = _
 

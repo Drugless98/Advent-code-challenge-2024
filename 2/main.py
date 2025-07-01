@@ -28,8 +28,9 @@ def main(task_input):
 
     def part_two(task_input: str):
         from data_object import Report
-        sum = -4
+        #: init values
         reports_input = task_input.splitlines()
+        sum = -4
         report_objects: list[Report]= []
 
         #: make dataobjects     

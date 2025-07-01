@@ -15,12 +15,15 @@ def time_execution(func: callable):
     return wrapper
 
 #: Constant
-DAY = _
+DAY = 6
 
 def main(task_input):
     def part_one(task_input: str):
-        return None
-    
+        from Map_controller import Map
+        guard_map = Map(task_input)
+        guard_map.iterate()
+
+
     def part_two(task_input: str):
         return None
     

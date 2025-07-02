@@ -7,51 +7,113 @@ class Direction(Enum):
     South   = "v"
     West    = "<"
 
+    def next(self):
+        directions = list(Direction)
+        index = directions.index(self)
+        return directions[(index + 1) % len(directions)]
+
 class Map:
     def __init__(self, task_input: str):
         self.All_Tiles = {}
-        self.Obstacle_rows: dict[list] = {} #: Dict of obstacles in each row
-        self.Obstacle_cols: dict[list] = {} #: Dict of obstacles in each col
+        self.Original_pos = None
         self.current_pos = None
         self.current_dir = None
 
+        self.visited = set()
+
         for r_idx, row in enumerate(task_input.splitlines()):
             self.All_Tiles[r_idx] = {}
-            self.Obstacle_rows[r_idx] = []
 
             for c_idx, col in enumerate(row):
-                if not c_idx in self.Obstacle_cols:
-                    self.Obstacle_cols[c_idx] = []
-
                 if not col in [".", "#"]:
-                    self.current_pos = (r_idx, c_idx)
                     self.current_dir = Direction(col)
-                elif col == "#":
-                    self.Obstacle_rows[r_idx].append(c_idx)
-                    self.Obstacle_cols[c_idx].append(r_idx)
+                    self.current_pos = (r_idx, c_idx)
+                    self.Original_pos = (r_idx, c_idx, self.current_dir)
                 self.All_Tiles[r_idx][c_idx] = col
 
     def view_All_Tiles(self):
-        import json
-        print(json.dumps(self.All_Tiles, indent=2))
+        string = ""
+        for row in self.All_Tiles:
+            for col in self.All_Tiles[row]:
+                current = self.All_Tiles[row][col]
+                string += current
+            string += "\n"
+        print(string)
+        return string
 
-    def find_obstacle(self, pos: tuple[int, int], dir: Direction):
-        row_pos, col_pos = pos
-        match dir:
-            case Direction.North:
-            ##: look through the obstacles in the same column and find the closest one with lower row index (going up)
-                for idx, val in enumerate(self.Obstacle_cols[col_pos]):
-                    if val < row_pos and self.Obstacle_cols[col_pos][idx+1] > row_pos:
-                        return (val, col_pos)
+    def move(self, old_pos, new_pos):
+        new_x, new_y = new_pos
 
-            case Direction.East:
-                pass
+    #: Check if currently in a loop otherwise save pos and continue
+        if (old_pos[0], old_pos[1], self.current_dir) in self.visited:
+            return "Loop"
+        else:
+            self.visited.add((old_pos[0], old_pos[1], self.current_dir))
 
-            case Direction.South:
-                pass
-
-            case Direction.West:
-                pass
+    #: move to next tile and place and X where guard have been 
+        if new_x in self.All_Tiles and new_y in self.All_Tiles[new_x]:
+        #: Normal moves
+            if self.All_Tiles[new_x][new_y] in [".", "X"]:
+                self.All_Tiles[old_pos[0]][old_pos[1]] = "X"
+                self.current_pos = new_pos
+        #: When Wall is hit change dir
+            elif self.All_Tiles[new_x][new_y] == "#":
+                self.current_dir = self.current_dir.next()
+            return "Continue"
+        else:
+            self.All_Tiles[old_pos[0]][old_pos[1]] = "X"
+            return "Done"
+        
 
     def iterate(self):
-        obstacle = self.find_obstacle(self.current_pos, self.current_dir)
+        x, y = self.current_pos
+        match self.current_dir:
+            case Direction.North:
+                status = self.move((x,y), (x-1,y))
+            case Direction.East:
+                status = self.move((x,y), (x, y+1))
+            case Direction.South:
+                status = self.move((x,y), (x+1, y))
+            case Direction.West:
+                status = self.move((x,y), (x, y-1))
+        return status
+    
+    def count_X(self):
+        counter = 0
+        for row in self.All_Tiles:
+            for col in self.All_Tiles[row]:
+                current = self.All_Tiles[row][col]
+                if current == "X":
+                    counter += 1
+        return counter
+    
+    def get_list_of_X(self):
+        Xs = []
+        for row in self.All_Tiles:
+            for col in self.All_Tiles[row]:
+                current = self.All_Tiles[row][col]
+                if current == "X":
+                    Xs.append((row, col))
+        return Xs
+    
+
+def get_test_input():
+    return """....#.....
+                .........#
+                ..........
+                ..#.......
+                .......#..
+                ..........
+                .#..^.....
+                ........#.
+                #.........
+                ......#...""".replace(" ", "")
+
+if __name__ == "__main__":
+    input = get_test_input()
+    m = Map(input)
+    
+    while m.iterate() == "Continue":
+        pass
+    print(m.count_X())
+    

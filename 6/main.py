@@ -65,7 +65,6 @@ def main(task_input):
     return part_one(task_input) and part_two(task_input)
 
 
-
 if __name__ == "__main__":
     #: Get task info and input
     input = Input()
